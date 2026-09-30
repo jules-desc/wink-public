@@ -1,0 +1,367 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// =====================================================
+// 1. COLLECTIVITE — Entité centrale (~35 000+)
+// =====================================================
+model Collectivite {
+  id               String    @id @default(uuid())
+  slug             String    @unique
+
+  // Identité
+  nom              String
+  nomCourt         String?
+  type             String    // COMMUNE | EPCI | DEPARTEMENT | REGION | CDG | SYNDICAT_MIXTE
+  sousType         String?   // COMMUNAUTE_AGGLO | COMMUNAUTE_COMMUNES | COMMUNAUTE_URBAINE | METROPOLE
+
+  // Codes officiels
+  codeInsee        String    @unique
+  codeSiren        String?
+  codesPostaux     String[]
+
+  // Géographie
+  departementCode  String?
+  departementNom   String?
+  regionCode       String?
+  regionNom        String?
+  latitude         Float?
+  longitude        Float?
+
+  // Adresse (pattern Wink : champs à plat)
+  adresseNumero     String?
+  adresseRue        String?
+  adresseVille      String?
+  adresseCodePostal String?
+  adresseFormatee   String?
+
+  // Contact
+  telephone        String?
+  email            String?
+  siteWeb          String?
+  horaires         String?   @db.Text
+
+  // Branding / Marque employeur (pattern Wink Company)
+  logoUrl          String?
+  blasonUrl        String?
+  bannerUrl        String?
+  description      String?   @db.Text
+  primaryColor     String?
+  socialMediaLinks Json?     @default("{}")
+
+  // Données employeur
+  population       Int?
+  effectifs        Int?
+  budgetTotal      Decimal?  @db.Decimal(18, 2)
+  ratioFemmes      Float?
+  ageMoyen         Float?
+  photosGallery    Json?     @default("[]")
+  employerType     String    @default("PUBLIC")
+  businessSector   String?   @default("PUBLIC_SERVICE")
+  benefits         String[]  @db.Text
+
+  // Qualité données
+  qualityScore     Float?
+
+  // Compétences & membres
+  competences      String[]
+  membresInsee     String[]
+
+  // Source CRM
+  hubspotId        String?
+  linkedinUrl      String?
+  nomDeDomaine     String?
+
+  // Statut page
+  pageStatus       String    @default("AUTO") // AUTO | CLAIMED | VERIFIED
+  isClaimed        Boolean   @default(false)
+  claimedAt        DateTime? @db.Timestamptz(0)
+  claimedByUserId  String?
+
+  // Soft-delete
+  deletedAt        DateTime? @db.Timestamptz(0)
+
+  // Timestamps
+  createdAt        DateTime  @default(now()) @db.Timestamptz(0)
+  updatedAt        DateTime  @updatedAt @db.Timestamptz(0)
+
+  // Relations
+  offresEmploi     OffreEmploi[]
+  contenuPage      ContenuPage?
+  branding         CollectiviteBranding?
+  donneesPubliques DonneePublique[]
+  claimRequests    ClaimRequest[]
+  importSources    ImportSource[]
+
+  @@index([type])
+  @@index([departementCode])
+  @@index([regionCode])
+  @@index([pageStatus])
+  @@index([type, departementCode])
+  @@map("collectivites")
+}
+
+// =====================================================
+// 2. OFFRE EMPLOI — Offres scrapées (pattern Wink Job)
+// =====================================================
+model OffreEmploi {
+  id                String    @id @default(uuid())
+  collectiviteId    String
+  sourceExternalId  String?
+
+  // Infos de base
+  titre             String
+  description       String?   @db.Text
+  urlSource         String?   @db.Text
+  source            String
+
+  // Contrat (nommage Wink)
+  contractType         String?
+  workSchedule         String?
+  remote               String?
+  contractDuration     Int?
+  contractDurationUnit String?
+
+  // Localisation (adresse à plat)
+  adresseVille         String?
+  adresseCodePostal    String?
+  adresseDepartement   String?
+  latitude             Float?
+  longitude            Float?
+
+  // Salaire (pattern Wink)
+  salaryMode       String?
+  salaryMin        Decimal?  @db.Decimal(18, 3)
+  salaryMax        Decimal?  @db.Decimal(18, 3)
+  salaryCurrency   String?   @default("EUR")
+  salaryPeriod     String?   @default("YEAR")
+
+  // Profil
+  experience       String?
+  education        String?
+
+  // Champs FPT (identiques à Wink Job.public*)
+  employerType                   String    @default("PUBLIC")
+  publicJobTypeCode              String?
+  publicLegalGroundCode          String?
+  publicJobCreationReasonCode    String?
+  publicGradeCodes               String[]
+  publicGradeCategories          String[]
+  publicGradeFrameworkCodes      String[]
+  publicGradeSectorCodes         String[]
+  publicOccupationCodes          String[]
+  publicOccupationSubfamilyCodes String[]
+  publicOccupationFamilyCodes    String[]
+  publicContractualEligibility   Boolean?
+  publicMissionsDescription      String?   @db.Text
+
+  // Dates
+  datePublication  DateTime? @db.Timestamptz(0)
+  dateExpiration   DateTime? @db.Timestamptz(0)
+  dateLimite       DateTime? @db.Timestamptz(0)
+
+  // Meta
+  status           String    @default("ACTIVE")
+  createdAt        DateTime  @default(now()) @db.Timestamptz(0)
+  updatedAt        DateTime  @updatedAt @db.Timestamptz(0)
+
+  collectivite     Collectivite @relation(fields: [collectiviteId], references: [id], onDelete: Cascade)
+
+  @@unique([source, sourceExternalId])
+  @@index([collectiviteId])
+  @@index([collectiviteId, status])
+  @@index([status, dateExpiration])
+  @@index([source])
+  @@map("offres_emploi")
+}
+
+// =====================================================
+// 3. CONTENU PAGE — Contenu IA + éditorial (1:1)
+// =====================================================
+model ContenuPage {
+  id               String    @id @default(uuid())
+  collectiviteId   String    @unique
+
+  // SEO
+  titreSeo         String?
+  metaDescription  String?
+  titreH1          String?
+
+  // Sections figées MVP
+  introduction         String?   @db.Text
+  pourquoiRejoindre    String?   @db.Text
+  cadreDeVie           String?   @db.Text
+  filieresMetiers      String?   @db.Text
+
+  // Sections flexibles (évolutions futures)
+  sectionsExtra        Json      @default("[]")
+
+  // Structured Data SEO
+  structuredDataJson   Json?
+
+  // Génération IA
+  modeleIa             String?
+  promptVersion        String?
+  dateGeneration       DateTime? @db.Timestamptz(0)
+  scoreQualite         Float?
+
+  // Overrides manuels (pages claimées)
+  contenuManuel        Json?     @default("{}")
+
+  // Statut
+  status               String    @default("DRAFT")
+  publishedAt          DateTime? @db.Timestamptz(0)
+
+  createdAt            DateTime  @default(now()) @db.Timestamptz(0)
+  updatedAt            DateTime  @updatedAt @db.Timestamptz(0)
+
+  collectivite         Collectivite @relation(fields: [collectiviteId], references: [id], onDelete: Cascade)
+
+  @@map("contenus_page")
+}
+
+// =====================================================
+// 3b. COLLECTIVITE BRANDING — Charte graphique (1:1)
+// =====================================================
+model CollectiviteBranding {
+  id               String    @id @default(uuid())
+  collectiviteId   String    @unique
+
+  // Couleurs (dénormalisées pour rendu rapide)
+  primaryColor     String?
+  secondaryColor   String?
+  accentColor      String?
+  backgroundColor  String?
+  textColor        String?
+
+  // Typographie
+  headingFont      String?
+  bodyFont         String?
+
+  // Logos (hébergés chez nous)
+  logoMainUrl      String?
+  logoIconUrl      String?
+
+  // Visuels
+  borderRadius     String?
+
+  // Config étendue (extras, métadonnées, WCAG)
+  colorsConfig     Json      @default("{}")
+  logosConfig      Json      @default("{}")
+  typographyConfig Json      @default("{}")
+  visualsConfig    Json      @default("{}")
+
+  // Source & workflow
+  source           String    @default("EXTRACTED")
+  status           String    @default("DRAFT")
+  extractedFrom    String?
+  extractedBy      String?
+  confidenceScore  String?
+  notes            String?   @db.Text
+
+  // Validation
+  validatedAt      DateTime? @db.Timestamptz(0)
+  validatedBy      String?
+  publishedAt      DateTime? @db.Timestamptz(0)
+
+  // Timestamps
+  createdAt        DateTime  @default(now()) @db.Timestamptz(0)
+  updatedAt        DateTime  @updatedAt @db.Timestamptz(0)
+
+  collectivite     Collectivite @relation(fields: [collectiviteId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+  @@map("collectivite_brandings")
+}
+
+// =====================================================
+// 4. DONNEE PUBLIQUE — Données brutes scrapées
+// =====================================================
+model DonneePublique {
+  id               String    @id @default(uuid())
+  collectiviteId   String
+
+  source           String
+  typeDonnee       String
+  donnees          Json
+  hash             String?
+
+  dateCollecte     DateTime  @default(now()) @db.Timestamptz(0)
+  dateSource       DateTime? @db.Timestamptz(0)
+  createdAt        DateTime  @default(now()) @db.Timestamptz(0)
+
+  collectivite     Collectivite @relation(fields: [collectiviteId], references: [id], onDelete: Cascade)
+
+  @@index([collectiviteId])
+  @@index([collectiviteId, source, typeDonnee])
+  @@map("donnees_publiques")
+}
+
+// =====================================================
+// 5. CLAIM REQUEST — Leads commerciaux
+// =====================================================
+model ClaimRequest {
+  id               String    @id @default(uuid())
+  collectiviteId   String
+
+  nom              String
+  prenom           String?
+  email            String
+  telephone        String?
+  fonction         String?
+  message          String?   @db.Text
+
+  status           String    @default("PENDING")
+  emailDomainMatch Boolean   @default(false)
+  source           String?
+
+  notes            String?   @db.Text
+  assignedTo       String?
+  contactedAt      DateTime? @db.Timestamptz(0)
+  convertedAt      DateTime? @db.Timestamptz(0)
+
+  // Soft-delete
+  deletedAt        DateTime? @db.Timestamptz(0)
+
+  createdAt        DateTime  @default(now()) @db.Timestamptz(0)
+  updatedAt        DateTime  @updatedAt @db.Timestamptz(0)
+
+  collectivite     Collectivite @relation(fields: [collectiviteId], references: [id], onDelete: Cascade)
+
+  @@index([collectiviteId])
+  @@index([status])
+  @@index([email])
+  @@map("claim_requests")
+}
+
+// =====================================================
+// 6. IMPORT SOURCE — Tracking pipelines de scraping
+// =====================================================
+model ImportSource {
+  id               String    @id @default(uuid())
+  collectiviteId   String?
+
+  source           String
+  status           String    @default("PENDING")
+  errorMessage     String?   @db.Text
+
+  recordsTotal     Int?
+  recordsImported  Int?
+  recordsUpdated   Int?
+  recordsSkipped   Int?
+  recordsErrored   Int?
+
+  startedAt        DateTime? @db.Timestamptz(0)
+  completedAt      DateTime? @db.Timestamptz(0)
+  createdAt        DateTime  @default(now()) @db.Timestamptz(0)
+
+  collectivite     Collectivite? @relation(fields: [collectiviteId], references: [id], onDelete: SetNull)
+
+  @@index([source, status])
+  @@map("import_sources")
+}
