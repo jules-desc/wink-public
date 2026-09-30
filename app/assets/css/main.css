@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: var(--font-sans);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
