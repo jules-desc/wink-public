@@ -130,3 +130,11 @@ export function formatRelativeDate(dateStr: string | null | undefined): string {
   if (diffDays < 365) return `Il y a ${Math.floor(diffDays / 30)} mois`
   return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(date)
 }
+
+const frDateLong = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' })
+
+export function formatDateLong(date: string | Date | null | undefined): string {
+  if (!date) return ''
+  const d = typeof date === 'string' ? new Date(date) : date
+  return Number.isNaN(d.getTime()) ? '' : frDateLong.format(d)
+}

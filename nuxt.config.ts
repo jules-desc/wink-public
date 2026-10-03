@@ -50,6 +50,10 @@ export default defineNuxtConfig({
     // Pages listing : ISR avec revalidation toutes les heures
     '/departement/**': { swr: 3600 },
     '/region/**': { swr: 3600 },
+    // Ressources et annuaire : ISR avec revalidation toutes les heures
+    '/ressources': { swr: 3600 },
+    '/ressources/**': { swr: 3600 },
+    '/annuaire': { swr: 3600 },
     // API : pas de cache côté CDN
     '/api/**': { cors: true }
   },

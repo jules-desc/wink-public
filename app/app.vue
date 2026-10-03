@@ -16,19 +16,37 @@ useSeoMeta({
 
 const nav: MepNavItem[] = [
   { label: 'Accueil', to: '/' },
-  { label: 'Annuaire des employeurs', to: '/#regions' }
+  { label: 'Ressources', to: '/ressources' },
+  { label: 'Guides', to: '/ressources/guides' },
+  { label: 'Modèles', to: '/ressources/modeles' },
+  { label: 'Fiches métiers', to: '/ressources/metiers' },
+  { label: 'Grilles et simulateur', to: '/ressources/grilles' },
+  { label: 'Actualités', to: '/ressources/actualites' },
+  { label: 'Annuaire', to: '/annuaire' }
 ]
 
 const tools: MepNavItem[] = [
-  { label: 'Rechercher', to: '/#search', icon: 'i-lucide-search' }
+  { label: 'Rechercher', to: '/annuaire', icon: 'i-lucide-search' },
+  { label: 'Newsletter', to: '/ressources#newsletter', icon: 'i-lucide-mail' }
 ]
 
 const footerColumns: MepFooterColumn[] = [
   {
-    title: 'Explorer',
+    title: 'Ressources',
     links: [
-      { label: 'Toutes les régions', to: '/#regions' },
-      { label: 'Rechercher une collectivité', to: '/#search' }
+      { label: 'Guides', to: '/ressources/guides' },
+      { label: 'Modèles et outils', to: '/ressources/modeles' },
+      { label: 'Fiches métiers', to: '/ressources/metiers' },
+      { label: 'Grilles et simulateur', to: '/ressources/grilles' },
+      { label: 'Chiffres clés', to: '/ressources/chiffres-cles' },
+      { label: 'Actualités', to: '/ressources/actualites' }
+    ]
+  },
+  {
+    title: 'Annuaire',
+    links: [
+      { label: 'Toutes les régions', to: '/annuaire' },
+      { label: 'Rechercher une collectivité', to: '/annuaire' }
     ]
   },
   {

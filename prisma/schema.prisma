@@ -365,3 +365,63 @@ model ImportSource {
   @@index([source, status])
   @@map("import_sources")
 }
+
+// =====================================================
+// 8. RESSOURCES — Section média (guides, modèles, actualités, métiers, portraits)
+// Source de vérité : content/ressources/**/*.md, importés par scripts/import-ressources.ts
+// =====================================================
+model Ressource {
+  id                String    @id @default(uuid())
+  slug              String
+  type              String    // GUIDE | MODELE | ACTUALITE | METIER | PORTRAIT
+  statut            String    @default("BROUILLON") // BROUILLON | PUBLIE
+
+  titre             String
+  chapo             String
+  contenu           String    @db.Text
+  auteur            String?
+  tempsLecture      Int?
+  imageUrl          String?
+  enAvant           Boolean   @default(false)
+
+  // Classement (filtres format × thème × type de collectivité)
+  thematiques       String[]
+  personas          String[]
+  typesCollectivite String[]
+  versants          String[]
+
+  faq               Json      @default("[]")
+  sources           Json      @default("[]")
+  meta              Json      @default("{}")
+
+  // SEO
+  titreSeo          String?
+  metaDescription   String?
+
+  // Suivi de l'import
+  fichierSource     String?
+  empreinte         String?
+
+  datePublication   DateTime  @db.Timestamptz(0)
+  dateMiseAJour     DateTime? @db.Timestamptz(0)
+  createdAt         DateTime  @default(now()) @db.Timestamptz(0)
+  updatedAt         DateTime  @updatedAt @db.Timestamptz(0)
+
+  @@unique([type, slug])
+  @@index([type, statut, datePublication])
+  @@index([statut, enAvant])
+  @@map("ressources")
+}
+
+model NewsletterInscription {
+  id                String    @id @default(uuid())
+  email             String    @unique
+  typeCollectivite  String?
+  consentement      Boolean   @default(false)
+  source            String?   // page d'inscription
+  confirmeAt        DateTime? @db.Timestamptz(0)
+  desinscritAt      DateTime? @db.Timestamptz(0)
+  createdAt         DateTime  @default(now()) @db.Timestamptz(0)
+
+  @@map("newsletter_inscriptions")
+}

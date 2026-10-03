@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { RegionItem } from '~/types/api'
+import type { RessourcesListResponse } from '~/types/ressources'
 
 const config = useRuntimeConfig()
 
@@ -19,6 +20,8 @@ const { data: regions } = await useAsyncData(
   'regions',
   () => $fetch<RegionItem[]>('/api/regions')
 )
+
+const { data: dernieres } = await useFetch<RessourcesListResponse>('/api/ressources', { query: { limit: 3 } })
 
 const features = [{
   icon: 'i-lucide-building-2',
@@ -55,10 +58,44 @@ const features = [{
       </div>
     </MepPageHero>
 
+    <div
+      v-if="dernieres?.data.length"
+      class="mep-container py-18"
+    >
+      <MepSectionHeader
+        kicker="Ressources"
+        title="À la une"
+        description="Guides, modèles et actualités pour recruter dans le secteur public."
+      >
+        <template #action>
+          <UButton
+            to="/ressources"
+            variant="outline"
+            trailing-icon="i-lucide-arrow-right"
+          >
+            Toutes les ressources
+          </UButton>
+        </template>
+      </MepSectionHeader>
+      <div class="grid gap-10 mt-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+        <RessourceCard
+          :ressource="dernieres.data[0]!"
+          size="lg"
+        />
+        <div class="flex flex-col gap-8">
+          <RessourceCard
+            v-for="r in dernieres.data.slice(1)"
+            :key="r.id"
+            :ressource="r"
+          />
+        </div>
+      </div>
+    </div>
+
     <section
       v-if="regions?.length"
       id="regions"
-      class="bg-muted border-b border-default"
+      class="bg-muted border-y border-default"
     >
       <div class="mep-container py-18">
         <MepSectionHeader

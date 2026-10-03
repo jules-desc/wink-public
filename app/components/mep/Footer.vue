@@ -16,7 +16,7 @@ const year = new Date().getFullYear()
 
 <template>
   <footer class="bg-(--blue-950) text-(--blue-100) border-t-4 border-(--red-700)">
-    <div class="mep-container grid gap-8 pt-12 pb-8 sm:grid-cols-2 lg:grid-cols-[minmax(240px,1.4fr)_repeat(3,minmax(140px,1fr))]">
+    <div class="mep-container grid gap-8 pt-12 pb-8 sm:grid-cols-2 lg:grid-cols-[minmax(240px,1.4fr)_repeat(4,minmax(140px,1fr))]">
       <div class="flex flex-col gap-4">
         <MepLogo
           inverse

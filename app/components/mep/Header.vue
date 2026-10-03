@@ -15,13 +15,17 @@ const props = withDefaults(defineProps<{
 
 const route = useRoute()
 
-function isActive(item: MepNavItem) {
+function matches(item: MepNavItem) {
   if (item.to.includes('#')) return false
   if (item.to === '/') return route.path === '/'
-  return route.path.startsWith(item.to)
+  return route.path === item.to || route.path.startsWith(`${item.to}/`)
 }
 
-const navItems = computed(() => props.nav.map(item => ({ ...item, active: isActive(item) })))
+// L'élément actif est celui dont le chemin correspond le plus précisément à la page.
+const navItems = computed(() => {
+  const best = props.nav.filter(matches).sort((a, b) => b.to.length - a.to.length)[0]
+  return props.nav.map(item => ({ ...item, active: item === best }))
+})
 </script>
 
 <template>
