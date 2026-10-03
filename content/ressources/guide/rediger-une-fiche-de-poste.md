@@ -46,6 +46,8 @@ Dans une collectivité, la fiche de poste sert bien au-delà du recrutement. C'e
 
 Le répertoire des métiers territoriaux décrit chaque métier de façon générique. Sa fiche type comporte notamment : l'appellation du métier et sa famille professionnelle, une définition, la situation fonctionnelle, les conditions d'exercice, l'autonomie et les responsabilités, les relations fonctionnelles, les moyens techniques, le cadre statutaire (catégories, filières et cadres d'emplois les plus fréquemment observés), les conditions d'accès statutaires, puis les activités principales et spécifiques avec les compétences associées.
 
+Pour plusieurs métiers courants dans les communes, nos fiches métiers vous donnent aussi un premier repère : [secrétaire de mairie](/ressources/metiers/secretaire-de-mairie), [ATSEM](/ressources/metiers/atsem), [policier municipal](/ressources/metiers/policier-municipal), [auxiliaire de puériculture](/ressources/metiers/auxiliaire-de-puericulture) et [agent technique polyvalent](/ressources/metiers/agent-technique-polyvalent).
+
 Votre travail consiste à **passer du générique au spécifique** : retenir les activités réellement exercées dans votre service, préciser les moyens, nommer les interlocuteurs, chiffrer ce qui peut l'être.
 
 ## Les rubriques d'une bonne fiche de poste
