@@ -34,8 +34,8 @@ sources:
     url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000044416551/LEGISCTA000044422590/"
   - titre: "Collectivités locales, Secrétaires généraux de mairie : foire aux questions"
     url: "https://www.collectivites-locales.gouv.fr/connaitre-les-acteurs-et-les-institutions/fonction-publique-territoriale/la-carriere/secretaires-generaux-de-mairie-foire-aux-questions"
-  - titre: "Fonction publique, Place de l'emploi public : le 1er site d'emploi commun à toute la fonction publique"
-    url: "https://www.fonction-publique.gouv.fr/files/files/ArchivePortailFP/www.fonction-publique.gouv.fr/place-de-lemploi-public-1er-site-demploi-commun-a-toute-la-fonction-publique-est-ouvert.html"
+  - titre: "Fonction publique, La plateforme Choisir le service public passe le cap du million de visites"
+    url: "https://www.fonction-publique.gouv.fr/toutes-les-actualites/la-plateforme-choisir-le-service-public-passe-le-cap-du-million-de-visites"
   - titre: "Emploi territorial, portail des centres de gestion et du CNFPT"
     url: "https://www.emploi-territorial.fr/"
 meta: {}
@@ -52,7 +52,7 @@ Dans une petite commune, le recrutement repose souvent sur deux personnes : le m
 | Secrétaire général de mairie | Prépare la fiche de poste et l'avis, reçoit les candidatures, organise les entretiens, prépare les actes |
 | Centre de gestion | Assure la publicité des vacances d'emploi, organise les concours, apporte une assistance au recrutement |
 
-La loi n° 2023-1380 du 30 décembre 2023 visant à revaloriser le métier de secrétaire de mairie a remplacé cette appellation par celle de « secrétaire général de mairie ». Si c'est ce poste que vous cherchez à pourvoir, le maire porte alors seul, ou avec un adjoint, l'ensemble de la démarche : raison de plus pour solliciter le CDG dès le départ.
+La loi n° 2023-1380 du 30 décembre 2023 visant à revaloriser le métier de secrétaire de mairie a remplacé cette appellation par celle de « secrétaire général de mairie ». Si c'est ce poste que vous cherchez à pourvoir (voir la fiche métier [secrétaire de mairie](/ressources/metiers/secretaire-de-mairie)), le maire porte alors seul, ou avec un adjoint, l'ensemble de la démarche : raison de plus pour solliciter le CDG dès le départ.
 
 ## Ce que le code vous autorise dans une petite commune
 
@@ -72,7 +72,7 @@ Vérifiez que l'emploi figure au tableau des effectifs. Sinon, faites délibére
 
 ### 2. Déclarer la vacance au centre de gestion
 
-L'autorité territoriale informe le CDG compétent de la création ou de la vacance de tout emploi permanent (article L313-4). L'avis doit préciser **le motif de la vacance** et comporter **une description du poste**. Le CDG ou le CNFPT en assure ensuite la publicité sur l'espace numérique commun aux employeurs publics, Place de l'emploi public, présenté par le ministère comme le premier site d'emploi commun à toute la fonction publique.
+L'autorité territoriale informe le CDG compétent de la création ou de la vacance de tout emploi permanent (article L313-4). L'avis doit préciser **le motif de la vacance** et comporter **une description du poste**. Le CDG ou le CNFPT en assure ensuite la publicité sur l'espace numérique commun aux employeurs publics, la plateforme Choisir le service public (choisirleservicepublic.gouv.fr), lancée le 4 mai 2023 en remplacement de Place de l'emploi public.
 
 Le portail emploi-territorial.fr est celui des centres de gestion et du CNFPT. Demandez à votre CDG la marche à suivre et les identifiants pour saisir vos déclarations.
 
@@ -101,7 +101,7 @@ Votre commune est obligatoirement affiliée au CDG si elle emploie moins de 350 
 - **une assistance juridique statutaire** (article L452-38) ;
 - **l'accompagnement professionnel et l'animation du réseau des secrétaires généraux de mairie** (article L452-38).
 
-Au-delà de ces missions, de nombreux CDG proposent des prestations facultatives. Consultez le site de votre CDG pour connaître son offre et ses éventuels tarifs.
+Votre CDG peut aussi proposer des prestations complémentaires : consultez son site pour connaître son offre et ses éventuels tarifs.
 
 ## Calendrier type
 
