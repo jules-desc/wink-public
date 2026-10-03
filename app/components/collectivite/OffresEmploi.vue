@@ -20,7 +20,7 @@ const hasMore = computed(() => (props.offresCount ?? props.offres.length) > 10)
       >
         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <div class="space-y-2">
-            <h3 class="font-semibold">
+            <h3 class="text-lg/[26px] font-bold">
               {{ offre.titre }}
             </h3>
             <div class="flex flex-wrap gap-2">
@@ -85,7 +85,7 @@ const hasMore = computed(() => (props.offresCount ?? props.offres.length) > 10)
               </span>
               <span
                 v-if="offre.dateLimite"
-                class="flex items-center gap-1 text-orange-500"
+                class="flex items-center gap-1 text-warning"
               >
                 <UIcon name="i-lucide-alarm-clock" />
                 Limite : {{ new Date(offre.dateLimite).toLocaleDateString('fr-FR') }}
@@ -97,6 +97,7 @@ const hasMore = computed(() => (props.offresCount ?? props.offres.length) > 10)
             :to="offre.urlSource"
             target="_blank"
             variant="outline"
+            color="primary"
             trailing-icon="i-lucide-external-link"
             class="shrink-0"
           >

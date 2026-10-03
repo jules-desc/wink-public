@@ -17,54 +17,51 @@ const avatarUrl = computed(() =>
 <template>
   <NuxtLink
     :to="`/etablissement/${collectivite.slug}`"
-    class="block"
+    class="block h-full p-5 bg-default ring ring-inset ring-default no-underline text-default transition-shadow duration-[120ms] hover:ring-primary hover:shadow-(--shadow-sm)"
   >
-    <UCard class="h-full hover:ring-primary hover:ring-1 transition-shadow">
-      <div class="flex items-start gap-3">
-        <UAvatar
-          v-if="avatarUrl"
-          :src="avatarUrl"
-          :alt="collectivite.nom"
-          size="lg"
-          class="shrink-0"
+    <div class="flex items-start gap-3.5">
+      <UAvatar
+        v-if="avatarUrl"
+        :src="avatarUrl"
+        :alt="collectivite.nom"
+        class="size-14"
+      />
+      <span
+        v-else
+        class="size-14 shrink-0 flex items-center justify-center bg-(--surface-brand-tint) text-primary"
+      >
+        <UIcon
+          name="i-lucide-landmark"
+          class="size-7"
         />
-        <div
-          v-else
-          class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 shrink-0"
-        >
-          <UIcon
-            name="i-lucide-landmark"
-            class="w-5 h-5 text-primary"
-          />
-        </div>
+      </span>
 
-        <div class="min-w-0 flex-1 space-y-1">
-          <h3 class="font-semibold truncate">
-            {{ collectivite.nom }}
-          </h3>
-          <div class="flex flex-wrap items-center gap-2">
-            <UBadge
-              color="primary"
-              variant="subtle"
-              size="sm"
-            >
-              {{ typeLabel }}
-            </UBadge>
-            <span
-              v-if="collectivite.departementNom"
-              class="text-sm text-muted"
-            >
-              {{ collectivite.departementNom }}
-            </span>
-          </div>
-          <div
-            v-if="collectivite.population"
+      <div class="min-w-0 flex-1 flex flex-col gap-1.5">
+        <h3 class="text-[17px]/6 font-bold truncate">
+          {{ collectivite.nom }}
+        </h3>
+        <div class="flex flex-wrap items-center gap-2">
+          <UBadge
+            color="primary"
+            variant="subtle"
+            size="sm"
+          >
+            {{ typeLabel }}
+          </UBadge>
+          <span
+            v-if="collectivite.departementNom"
             class="text-sm text-muted"
           >
-            {{ formatPopulation(collectivite.population) }}
-          </div>
+            {{ collectivite.departementNom }}
+          </span>
         </div>
+        <span
+          v-if="collectivite.population"
+          class="text-sm text-muted"
+        >
+          {{ formatPopulation(collectivite.population) }}
+        </span>
       </div>
-    </UCard>
+    </div>
   </NuxtLink>
 </template>

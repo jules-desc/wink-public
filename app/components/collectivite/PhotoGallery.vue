@@ -12,7 +12,7 @@ defineProps<{
     <figure
       v-for="(photo, i) in photos"
       :key="i"
-      class="relative overflow-hidden rounded-lg aspect-[4/3]"
+      class="relative overflow-hidden aspect-4/3 bg-elevated"
     >
       <img
         :src="photo.url"
@@ -22,7 +22,7 @@ defineProps<{
       >
       <figcaption
         v-if="photo.caption"
-        class="absolute bottom-0 inset-x-0 px-2 py-1 text-xs text-white bg-black/50 truncate"
+        class="absolute bottom-0 inset-x-0 px-2 py-1 text-xs text-white bg-(--blue-950)/70 truncate"
       >
         {{ photo.caption }}
       </figcaption>

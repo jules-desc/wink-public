@@ -11,32 +11,29 @@ defineProps<{
       color="success"
       variant="subtle"
       size="lg"
+      icon="i-lucide-badge-check"
     >
-      <UIcon
-        name="i-lucide-badge-check"
-        class="mr-1"
-      />
       Page vérifiée
     </UBadge>
   </div>
 
   <template v-else>
-    <!-- Desktop -->
-    <div class="hidden lg:block">
-      <UPageCTA
-        title="Vous gérez le recrutement ?"
-        :description="`Réclamez la page de ${collectiviteNom} pour personnaliser votre marque employeur et publier vos offres.`"
-        variant="subtle"
-        :links="[{
-          label: 'Réclamez cette page',
-          to: '#claim',
-          icon: 'i-lucide-hand',
-          size: 'lg' as const
-        }]"
-      />
+    <!-- Desktop : encart de la colonne latérale -->
+    <div class="hidden lg:flex flex-col gap-3 p-5 bg-(--surface-brand-tint)">
+      <strong class="text-highlighted">Vous gérez le recrutement ?</strong>
+      <p class="text-sm text-muted">
+        Réclamez la page de {{ collectiviteNom }} pour personnaliser votre marque employeur et publier vos offres.
+      </p>
+      <UButton
+        to="#claim"
+        block
+        icon="i-lucide-hand"
+      >
+        Réclamez cette page
+      </UButton>
     </div>
 
-    <!-- Mobile sticky -->
+    <!-- Mobile : CTA collant -->
     <div class="fixed bottom-0 inset-x-0 z-50 p-4 bg-default/95 backdrop-blur border-t border-default lg:hidden">
       <UButton
         to="#claim"

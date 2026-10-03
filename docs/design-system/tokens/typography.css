@@ -1,0 +1,27 @@
+:root{
+--font-sans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+--font-serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+--font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+--font-heading:var(--font-sans);--font-editorial:var(--font-serif);--font-body:var(--font-sans);
+
+--fs-display:56px;--lh-display:62px;
+--fs-h1:40px;--lh-h1:48px;
+--fs-h2:32px;--lh-h2:40px;
+--fs-h3:24px;--lh-h3:32px;
+--fs-h4:20px;--lh-h4:28px;
+--fs-h5:18px;--lh-h5:26px;
+--fs-lead:20px;--lh-lead:32px;
+--fs-body-lg:18px;--lh-body-lg:30px;
+--fs-body:16px;--lh-body:26px;
+--fs-sm:14px;--lh-sm:22px;
+--fs-xs:12px;--lh-xs:18px;
+--fs-kicker:12px;--ls-kicker:0.09em;
+
+--fw-regular:400; /* @kind font */
+--fw-medium:500; /* @kind font */
+--fw-semibold:600; /* @kind font */
+--fw-bold:700; /* @kind font */
+--fw-black:800; /* @kind font */
+
+--ls-tight:-0.015em;--ls-display:-0.02em;
+}

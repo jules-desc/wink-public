@@ -1,0 +1,48 @@
+/*
+ * Mon Employeur Public — tokens du design system.
+ * Source : docs/design-system/tokens (export Claude Design).
+ * Les polices sont chargées par @nuxt/fonts à partir de --font-* (voir main.css).
+ */
+:root {
+  /* Bleu encre — couleur institutionnelle (≠ bleu France de l'État) */
+  --blue-975: #0B1235; --blue-950: #0E1640; --blue-900: #16215A; --blue-800: #1D2B6B; --blue-700: #2A3C8A; --blue-600: #3B50A8;
+  --blue-500: #5C70C2; --blue-300: #A9B4E0; --blue-200: #CBD2EE; --blue-100: #E3E7F6; --blue-50: #F1F3FA;
+  /* Vermillon — accent éditorial, usage parcimonieux */
+  --red-800: #8A2915; --red-700: #A8321C; --red-600: #C93D22; --red-500: #E0522F; --red-100: #FBE4DC; --red-50: #FDF2EE;
+  /* Neutres papier (gris chauds) */
+  --grey-0: #FFFFFF; --grey-25: #FAF9F6; --grey-50: #F4F2ED; --grey-100: #E9E6DF; --grey-200: #D6D2C8; --grey-300: #BDB8AC;
+  --grey-400: #9A958A; --grey-500: #6E6A61; --grey-600: #57534B; --grey-700: #3E3B35; --grey-800: #2A2824; --grey-900: #1C1B18;
+  /* Sémantiques */
+  --green-700: #1F6B45; --green-600: #1F7A4D; --green-100: #DDF0E5;
+  --orange-700: #8F4A00; --orange-600: #B35C00; --orange-100: #FCEBD6;
+  --crimson-700: #A11F26; --crimson-600: #C0262D; --crimson-100: #F9DEDF;
+  --info-700: #1B4A8F; --info-600: #2155A3; --info-100: #DEE8F7;
+
+  /* Alias sémantiques. Les actions suivent la couleur primaire, que le branding
+     d'une collectivité peut surcharger (useCollectiviteBranding). */
+  --text-title: var(--grey-900); --text-body: var(--grey-800); --text-muted: var(--grey-600); --text-subtle: var(--grey-500); --text-inverse: var(--grey-0);
+  --text-action: var(--ui-color-primary-800); --text-action-hover: var(--ui-color-primary-950); --text-accent: var(--red-700);
+  --surface-page: var(--grey-0); --surface-alt: var(--grey-25); --surface-sunken: var(--grey-50); --surface-card: var(--grey-0);
+  --surface-brand: var(--ui-color-primary-800); --surface-brand-deep: var(--blue-950); --surface-brand-tint: var(--ui-color-primary-50); --surface-accent-tint: var(--red-50);
+  --border-default: var(--grey-200); --border-subtle: var(--grey-100); --border-strong: var(--grey-700); --border-action: var(--ui-color-primary-800);
+  --focus-ring: var(--blue-600);
+  --success-fg: var(--green-700); --success-bg: var(--green-100);
+  --warning-fg: var(--orange-700); --warning-bg: var(--orange-100);
+  --error-fg: var(--crimson-700); --error-bg: var(--crimson-100);
+  --info-fg: var(--info-700); --info-bg: var(--info-100);
+
+  /* Espacement, gabarits, bordures, ombres, mouvement */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px; --space-6: 32px;
+  --space-7: 40px; --space-8: 48px; --space-9: 64px; --space-10: 80px; --space-11: 96px;
+  --container-max: 1200px; --container-narrow: 792px; --gutter: 24px;
+  --rule-w: 4px;
+  --shadow-sm: 0 1px 2px rgba(28, 27, 24, .08);
+  --shadow-md: 0 2px 6px rgba(28, 27, 24, .08), 0 6px 16px rgba(28, 27, 24, .06);
+  --shadow-overlay: 0 8px 28px rgba(14, 22, 64, .18);
+  --ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --dur-fast: 120ms; --dur-base: 200ms;
+  --focus-outline: 2px solid var(--focus-ring); --focus-offset: 2px;
+
+  /* Typographie */
+  --ls-tight: -0.015em; --ls-display: -0.02em; --ls-kicker: 0.09em;
+}

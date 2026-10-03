@@ -1,0 +1,26 @@
+:root{
+/* Bleu encre — couleur institutionnelle (≠ bleu France de l'État) */
+--blue-975:#0B1235;--blue-950:#0E1640;--blue-900:#16215A;--blue-800:#1D2B6B;--blue-700:#2A3C8A;--blue-600:#3B50A8;--blue-500:#5C70C2;--blue-300:#A9B4E0;--blue-200:#CBD2EE;--blue-100:#E3E7F6;--blue-50:#F1F3FA;
+/* Vermillon — accent éditorial, usage parcimonieux */
+--red-800:#8A2915;--red-700:#A8321C;--red-600:#C93D22;--red-500:#E0522F;--red-100:#FBE4DC;--red-50:#FDF2EE;
+/* Neutres papier (gris chauds) */
+--grey-0:#FFFFFF;--grey-25:#FAF9F6;--grey-50:#F4F2ED;--grey-100:#E9E6DF;--grey-200:#D6D2C8;--grey-300:#BDB8AC;--grey-400:#9A958A;--grey-500:#6E6A61;--grey-600:#57534B;--grey-700:#3E3B35;--grey-800:#2A2824;--grey-900:#1C1B18;
+/* Sémantiques */
+--green-700:#1F6B45;--green-600:#1F7A4D;--green-100:#DDF0E5;
+--orange-700:#8F4A00;--orange-600:#B35C00;--orange-100:#FCEBD6;
+--crimson-700:#A11F26;--crimson-600:#C0262D;--crimson-100:#F9DEDF;
+--info-700:#1B4A8F;--info-600:#2155A3;--info-100:#DEE8F7;
+
+/* Alias sémantiques */
+--text-title:var(--grey-900);--text-body:var(--grey-800);--text-muted:var(--grey-600);--text-subtle:var(--grey-500);--text-inverse:var(--grey-0);
+--text-action:var(--blue-800);--text-action-hover:var(--blue-950);--text-accent:var(--red-700);
+--surface-page:var(--grey-0);--surface-alt:var(--grey-25);--surface-sunken:var(--grey-50);--surface-card:var(--grey-0);--surface-brand:var(--blue-800);--surface-brand-deep:var(--blue-950);--surface-brand-tint:var(--blue-50);--surface-accent-tint:var(--red-50);
+--border-default:var(--grey-200);--border-subtle:var(--grey-100);--border-strong:var(--grey-700);--border-action:var(--blue-800);
+--action-primary:var(--blue-800);--action-primary-hover:var(--blue-900);--action-primary-active:var(--blue-950);
+--action-secondary-hover:var(--blue-50);--action-secondary-active:var(--blue-100);
+--focus-ring:var(--blue-600);
+--success-fg:var(--green-700);--success-bg:var(--green-100);
+--warning-fg:var(--orange-700);--warning-bg:var(--orange-100);
+--error-fg:var(--crimson-700);--error-bg:var(--crimson-100);
+--info-fg:var(--info-700);--info-bg:var(--info-100);
+}

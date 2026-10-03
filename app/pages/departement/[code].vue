@@ -60,33 +60,39 @@ function goToPage(p: number) {
 </script>
 
 <template>
-  <div>
-    <UPageSection>
-      <UBreadcrumb :items="breadcrumbItems" />
-      <UPageHeader
-        :title="`Collectivités du département ${departementNom}`"
-        :description="`${total} collectivités référencées dans le département ${departementNom}.`"
-        class="mt-4"
-      />
-    </UPageSection>
+  <div class="mep-container pt-8 pb-20">
+    <UBreadcrumb :items="breadcrumbItems" />
 
-    <UPageSection>
+    <div class="mt-6 pb-8 border-b border-default flex flex-col gap-2.5">
+      <h1 class="text-3xl/10 md:text-[40px]/12 font-extrabold">
+        {{ `Collectivités du département ${departementNom}` }}
+      </h1>
+      <p class="text-lg/7 text-muted">
+        {{ `${total.toLocaleString('fr-FR')} collectivités référencées dans le département ${departementNom}.` }}
+      </p>
+    </div>
+
+    <div class="mt-8">
       <ListingGrid
         :collectivites="data?.data || []"
         :loading="status === 'pending'"
       />
+    </div>
 
-      <div
-        v-if="data && data.meta.totalPages > 1"
-        class="flex justify-center mt-8"
-      >
-        <UPagination
-          :model-value="page"
-          :total="data.meta.total"
-          :items-per-page="data.meta.limit"
-          @update:model-value="goToPage"
-        />
-      </div>
-    </UPageSection>
+    <div
+      v-if="data && data.meta.totalPages > 1"
+      class="flex justify-center mt-10"
+    >
+      <UPagination
+        :page="page"
+        :total="data.meta.total"
+        :items-per-page="data.meta.limit"
+        active-color="primary"
+        active-variant="solid"
+        variant="ghost"
+        color="neutral"
+        @update:page="goToPage"
+      />
+    </div>
   </div>
 </template>

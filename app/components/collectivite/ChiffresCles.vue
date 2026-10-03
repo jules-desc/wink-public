@@ -12,15 +12,15 @@ const stats = computed(() => {
   if (props.population != null) {
     items.push({
       icon: 'i-lucide-users',
-      value: formatPopulation(props.population),
-      label: 'Population'
+      value: formatNumber(props.population),
+      label: 'Habitants'
     })
   }
   if (props.effectifs != null) {
     items.push({
       icon: 'i-lucide-briefcase',
-      value: formatEffectifs(props.effectifs),
-      label: 'Effectifs'
+      value: formatNumber(props.effectifs),
+      label: 'Agents'
     })
   }
   if (props.budgetTotal != null) {
@@ -33,8 +33,8 @@ const stats = computed(() => {
   if (props.ratioFemmes != null) {
     items.push({
       icon: 'i-lucide-users',
-      value: `${props.ratioFemmes.toFixed(0)}% femmes`,
-      label: 'Parité'
+      value: `${props.ratioFemmes.toFixed(0)} %`,
+      label: 'Parité (femmes)'
     })
   }
   if (props.ageMoyen != null) {
@@ -51,25 +51,14 @@ const stats = computed(() => {
 <template>
   <div
     v-if="stats.length"
-    class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"
+    class="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3"
   >
-    <UCard
+    <MepStatCard
       v-for="stat in stats"
       :key="stat.label"
-      class="text-center"
-    >
-      <div class="flex flex-col items-center gap-2">
-        <UIcon
-          :name="stat.icon"
-          class="w-8 h-8 text-primary"
-        />
-        <div class="text-2xl font-bold text-primary">
-          {{ stat.value }}
-        </div>
-        <div class="text-sm text-muted">
-          {{ stat.label }}
-        </div>
-      </div>
-    </UCard>
+      :icon="stat.icon"
+      :value="stat.value"
+      :label="stat.label"
+    />
   </div>
 </template>

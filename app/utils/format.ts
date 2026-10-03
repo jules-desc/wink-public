@@ -1,5 +1,10 @@
 const frNumber = new Intl.NumberFormat('fr-FR')
 
+export function formatNumber(n: number | null | undefined): string {
+  if (n == null) return '—'
+  return frNumber.format(n)
+}
+
 export function formatPopulation(n: number | null | undefined): string {
   if (n == null) return '—'
   return `${frNumber.format(n)} habitants`
