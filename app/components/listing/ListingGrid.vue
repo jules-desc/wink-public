@@ -15,7 +15,7 @@ defineProps<{
     <USkeleton
       v-for="i in 6"
       :key="i"
-      class="h-28"
+      class="h-[118px]"
     />
   </div>
 

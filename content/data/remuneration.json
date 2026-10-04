@@ -1,0 +1,219 @@
+{
+  "pointIndice": {
+    "valeurAnnuelle": 59.0734,
+    "valeurMensuelle": 4.92278,
+    "dateEffet": "2023-07-01",
+    "source": {
+      "titre": "CDG 59 – CDG-INFO 2026-4 : revalorisation du SMIC au 1er juin 2026 et indemnité différentielle",
+      "url": "https://www.cdg59.fr/fileadmin/Services/Conseil_Gestion_Statutaires/Documentation_statutaire/CDGINFO/2026/cdg-info2026-4.pdf"
+    },
+    "verifie": true,
+    "note": "Traitement annuel afférent à l'indice majoré 100 : 5 907,34 € depuis le 01/07/2023 (décret n° 2023-519 du 28 juin 2023) ; aucune revalorisation depuis, confirmé par CDG 59 (juin 2026) et Service-Public (F461, vérifié le 01/06/2026)."
+  },
+  "cotisationsTitulaireCNRACL": [
+    {
+      "libelle": "Retenue pour pension CNRACL",
+      "taux": 11.1,
+      "assiette": "Traitement indiciaire brut + NBI",
+      "source": {
+        "titre": "CNRACL – Actif : les taux de cotisation (mis à jour le 24/02/2026)",
+        "url": "https://www.cnracl.retraites.fr/actif/ma-carriere-mes-droits/la-cotisation-cnracl-obligatoire/les-taux-de-cotisation"
+      },
+      "verifie": true
+    },
+    {
+      "libelle": "CSG déductible",
+      "taux": 6.8,
+      "assiette": "98,25 % du brut imposable (et 100 % de la participation employeur mutuelle/prévoyance)",
+      "source": {
+        "titre": "CDG 03 – Cotisations 2026 pour les titulaires et stagiaires (régime spécial CNRACL)",
+        "url": "https://www.cdg03.fr/contenu/uploads/2026/01/TAUX-COTISATIONS-2026-1.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "libelle": "CSG non déductible",
+      "taux": 2.4,
+      "assiette": "98,25 % du brut imposable (et 100 % de la participation employeur mutuelle/prévoyance)",
+      "source": {
+        "titre": "CDG 03 – Cotisations 2026 pour les titulaires et stagiaires (régime spécial CNRACL)",
+        "url": "https://www.cdg03.fr/contenu/uploads/2026/01/TAUX-COTISATIONS-2026-1.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "libelle": "CSG totale (déductible + non déductible)",
+      "taux": 9.2,
+      "assiette": "98,25 % du brut imposable (et 100 % de la participation employeur mutuelle/prévoyance)",
+      "source": {
+        "titre": "CDG 03 – Cotisations 2026 pour les titulaires et stagiaires (régime spécial CNRACL)",
+        "url": "https://www.cdg03.fr/contenu/uploads/2026/01/TAUX-COTISATIONS-2026-1.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "libelle": "CRDS",
+      "taux": 0.5,
+      "assiette": "98,25 % du brut imposable (et 100 % de la participation employeur mutuelle/prévoyance)",
+      "source": {
+        "titre": "CDG 03 – Cotisations 2026 pour les titulaires et stagiaires (régime spécial CNRACL)",
+        "url": "https://www.cdg03.fr/contenu/uploads/2026/01/TAUX-COTISATIONS-2026-1.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "libelle": "RAFP (retraite additionnelle de la fonction publique) – part agent",
+      "taux": 5.0,
+      "assiette": "Primes, SFT, heures supplémentaires/complémentaires, avantages en nature, participation employeur mutuelle/prévoyance… dans la limite de 20 % du traitement indiciaire brut",
+      "source": {
+        "titre": "CDG 03 – Cotisations 2026 pour les titulaires et stagiaires (régime spécial CNRACL)",
+        "url": "https://www.cdg03.fr/contenu/uploads/2026/01/TAUX-COTISATIONS-2026-1.pdf"
+      },
+      "verifie": true
+    }
+  ],
+  "indiceMajoreMinimum": {
+    "valeur": 366,
+    "dateEffet": "2024-01-01",
+    "source": {
+      "titre": "CDG 59 – CDG-INFO 2026-4 : revalorisation du SMIC au 1er juin 2026 et indemnité différentielle",
+      "url": "https://www.cdg59.fr/fileadmin/Services/Conseil_Gestion_Statutaires/Documentation_statutaire/CDGINFO/2026/cdg-info2026-4.pdf"
+    },
+    "verifie": true,
+    "note": "IM 366 (IB 367), soit 1 801,73 € brut mensuel à temps complet ; inférieur au SMIC revalorisé au 1er juin 2026, d'où une indemnité différentielle. Date d'effet 01/01/2024 confirmée par source secondaire (123territorial.fr), non relue sur Légifrance."
+  },
+  "cadresEmplois": [
+    {
+      "slug": "adjoints-administratifs-territoriaux",
+      "nom": "Adjoints administratifs territoriaux",
+      "filiere": "administrative",
+      "categorie": "C",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "adjoints-techniques-territoriaux",
+      "nom": "Adjoints techniques territoriaux",
+      "filiere": "technique",
+      "categorie": "C",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "agents-de-maitrise-territoriaux",
+      "nom": "Agents de maîtrise territoriaux",
+      "filiere": "technique",
+      "categorie": "C",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "agents-territoriaux-specialises-des-ecoles-maternelles",
+      "nom": "Agents territoriaux spécialisés des écoles maternelles",
+      "filiere": "sociale",
+      "categorie": "C",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "auxiliaires-de-puericulture-territoriaux",
+      "nom": "Auxiliaires de puériculture territoriaux",
+      "filiere": "médico-sociale",
+      "categorie": "B",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "redacteurs-territoriaux",
+      "nom": "Rédacteurs territoriaux",
+      "filiere": "administrative",
+      "categorie": "B",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "techniciens-territoriaux",
+      "nom": "Techniciens territoriaux",
+      "filiere": "technique",
+      "categorie": "B",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "attaches-territoriaux",
+      "nom": "Attachés territoriaux",
+      "filiere": "administrative",
+      "categorie": "A",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "ingenieurs-territoriaux",
+      "nom": "Ingénieurs territoriaux",
+      "filiere": "technique",
+      "categorie": "A",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "animateurs-territoriaux",
+      "nom": "Animateurs territoriaux",
+      "filiere": "animation",
+      "categorie": "B",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "adjoints-territoriaux-d-animation",
+      "nom": "Adjoints territoriaux d'animation",
+      "filiere": "animation",
+      "categorie": "C",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    },
+    {
+      "slug": "agents-de-police-municipale",
+      "nom": "Agents de police municipale",
+      "filiere": "police municipale",
+      "categorie": "C",
+      "source": {
+        "titre": "CDG 28 – Tableau récapitulatif des filières et cadres d'emplois de la FPT (octobre 2023)",
+        "url": "https://www.cdg28.fr/wp-content/uploads/2023/11/recapitulatif-filiere-cadres-emplois.pdf"
+      },
+      "verifie": true
+    }
+  ]
+}

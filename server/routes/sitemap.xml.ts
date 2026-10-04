@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
   const requestUrl = getRequestURL(event as Parameters<typeof getRequestURL>[0])
   const siteUrl = config.public.siteUrl || requestUrl.origin
 
-  const [collectivites, departements, regions] = await Promise.all([
+  const [collectivites, departements, regions, ressources] = await Promise.all([
     prisma.collectivite.findMany({
       where: { deletedAt: null },
       select: { slug: true, updatedAt: true },
@@ -18,12 +18,32 @@ export default defineEventHandler(async (event) => {
       by: ['regionCode'],
       where: { deletedAt: null, regionCode: { not: null } },
       _max: { updatedAt: true }
+    }),
+    prisma.ressource.findMany({
+      where: { statut: 'PUBLIE' },
+      select: { type: true, slug: true, updatedAt: true },
+      orderBy: { datePublication: 'desc' }
     })
   ])
 
   const urls: Array<{ loc: string, lastmod?: string, changefreq: string, priority: string }> = []
 
   urls.push({ loc: siteUrl, changefreq: 'daily', priority: '1.0' })
+  urls.push({ loc: `${siteUrl}/ressources`, changefreq: 'daily', priority: '0.9' })
+  urls.push({ loc: `${siteUrl}/annuaire`, changefreq: 'weekly', priority: '0.8' })
+  urls.push({ loc: `${siteUrl}/ressources/grilles`, changefreq: 'monthly', priority: '0.8' })
+  urls.push({ loc: `${siteUrl}/ressources/chiffres-cles`, changefreq: 'monthly', priority: '0.7' })
+  for (const r of RUBRIQUES) {
+    urls.push({ loc: `${siteUrl}/ressources/${r.segment}`, changefreq: 'weekly', priority: '0.8' })
+  }
+  for (const r of ressources) {
+    urls.push({
+      loc: `${siteUrl}${ressourcePath(r.type, r.slug)}`,
+      lastmod: r.updatedAt.toISOString().split('T')[0],
+      changefreq: 'monthly',
+      priority: '0.8'
+    })
+  }
 
   for (const c of collectivites) {
     urls.push({

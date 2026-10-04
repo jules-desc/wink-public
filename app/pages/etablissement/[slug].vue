@@ -100,71 +100,78 @@ if (data.value) {
 <template>
   <div
     v-if="data"
-    class="pb-24 lg:pb-0"
+    class="mep-container pt-8 pb-28 lg:pb-20"
   >
-    <UPageSection>
-      <CollectiviteHeader :collectivite="data" />
-    </UPageSection>
+    <CollectiviteHeader :collectivite="data" />
 
-    <UPageSection
-      v-if="data.population || data.effectifs || data.budgetTotal || data.ratioFemmes || data.ageMoyen"
-      title="Chiffres clés"
-    >
-      <CollectiviteChiffresCles
-        :population="data.population"
-        :effectifs="data.effectifs"
-        :budget-total="data.budgetTotal"
-        :ratio-femmes="data.ratioFemmes"
-        :age-moyen="data.ageMoyen"
-      />
-    </UPageSection>
+    <div class="grid gap-12 mt-10 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div>
+        <MepContentSection
+          v-if="data.population || data.effectifs || data.budgetTotal || data.ratioFemmes || data.ageMoyen"
+          kicker="Données publiques"
+          title="Chiffres clés"
+        >
+          <CollectiviteChiffresCles
+            :population="data.population"
+            :effectifs="data.effectifs"
+            :budget-total="data.budgetTotal"
+            :ratio-femmes="data.ratioFemmes"
+            :age-moyen="data.ageMoyen"
+          />
+        </MepContentSection>
 
-    <UPageSection
-      v-if="data.photosGallery?.length"
-      title="En images"
-    >
-      <CollectivitePhotoGallery :photos="data.photosGallery" />
-    </UPageSection>
+        <MepContentSection
+          v-if="data.photosGallery?.length"
+          title="En images"
+        >
+          <CollectivitePhotoGallery :photos="data.photosGallery" />
+        </MepContentSection>
 
-    <UPageSection title="Marque employeur">
-      <CollectiviteDescription
-        :contenu-page="data.contenuPage"
-        :description="data.description"
-      />
-    </UPageSection>
+        <MepContentSection title="Marque employeur">
+          <CollectiviteDescription
+            :contenu-page="data.contenuPage"
+            :description="data.description"
+          />
+        </MepContentSection>
 
-    <UPageSection
-      v-if="data.benefits.length"
-      title="Avantages"
-    >
-      <CollectiviteBenefits :benefits="data.benefits" />
-    </UPageSection>
+        <MepContentSection
+          v-if="data.benefits.length"
+          title="Avantages"
+        >
+          <CollectiviteBenefits :benefits="data.benefits" />
+        </MepContentSection>
 
-    <UPageSection
-      v-if="data.competences.length"
-      title="Compétences"
-    >
-      <CollectiviteCompetences :competences="data.competences" />
-    </UPageSection>
+        <MepContentSection
+          v-if="data.competences.length"
+          title="Compétences"
+        >
+          <CollectiviteCompetences :competences="data.competences" />
+        </MepContentSection>
 
-    <UPageSection
-      v-if="data.offresEmploi.length"
-      title="Offres d'emploi"
-    >
-      <CollectiviteOffresEmploi
-        :offres="data.offresEmploi"
-        :collectivite-nom="data.nom"
-        :offres-count="data.offresCount"
-      />
-    </UPageSection>
+        <MepContentSection
+          v-if="data.offresEmploi.length"
+          title="Offres d'emploi"
+        >
+          <CollectiviteOffresEmploi
+            :offres="data.offresEmploi"
+            :collectivite-nom="data.nom"
+            :offres-count="data.offresCount"
+          />
+        </MepContentSection>
+      </div>
 
-    <UPageSection title="Informations pratiques">
-      <CollectiviteInfosPratiques :collectivite="data" />
-    </UPageSection>
-
-    <CollectiviteClaimCTA
-      :collectivite-nom="data.nom"
-      :is-claimed="data.isClaimed"
-    />
+      <aside class="lg:pt-12">
+        <div class="flex flex-col gap-5 lg:sticky lg:top-6">
+          <h2 class="text-xl/7 font-bold">
+            Informations pratiques
+          </h2>
+          <CollectiviteInfosPratiques :collectivite="data" />
+          <CollectiviteClaimCTA
+            :collectivite-nom="data.nom"
+            :is-claimed="data.isClaimed"
+          />
+        </div>
+      </aside>
+    </div>
   </div>
 </template>

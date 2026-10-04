@@ -36,41 +36,45 @@ const avatarUrl = computed(() =>
 </script>
 
 <template>
-  <div class="space-y-6">
+  <div>
     <UBreadcrumb :items="breadcrumbItems" />
 
     <div
-      v-if="collectivite.bannerUrl"
-      class="relative w-full h-48 sm:h-64 rounded-xl overflow-hidden"
+      class="mt-6 h-40 sm:h-60 bg-elevated overflow-hidden flex items-center justify-center gap-2 text-sm text-dimmed"
     >
       <img
+        v-if="collectivite.bannerUrl"
         :src="collectivite.bannerUrl"
         :alt="`Bannière ${collectivite.nom}`"
-        class="w-full h-full object-cover"
+        class="size-full object-cover"
       >
+      <template v-else>
+        <UIcon
+          name="i-lucide-image"
+          class="size-5"
+        />
+        Bannière de la collectivité
+      </template>
     </div>
 
-    <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-      <UAvatar
-        v-if="avatarUrl"
-        :src="avatarUrl"
-        :alt="collectivite.nom"
-        size="3xl"
-        class="shrink-0"
-      />
-      <div
-        v-else
-        class="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 shrink-0"
-      >
+    <div class="flex flex-wrap items-start gap-6 -mt-10 px-4 sm:px-6">
+      <span class="size-20 shrink-0 flex items-center justify-center bg-default ring ring-inset ring-default shadow-(--shadow-md)">
+        <img
+          v-if="avatarUrl"
+          :src="avatarUrl"
+          :alt="collectivite.nom"
+          class="size-[82%] object-contain"
+        >
         <UIcon
+          v-else
           name="i-lucide-landmark"
-          class="w-10 h-10 text-primary"
+          class="size-10 text-primary"
         />
-      </div>
+      </span>
 
-      <div class="space-y-2">
-        <div class="flex flex-wrap items-center gap-2">
-          <h1 class="text-3xl font-bold tracking-tight">
+      <div class="flex flex-1 flex-col gap-2 pt-12">
+        <div class="flex flex-wrap items-center gap-3">
+          <h1 class="text-3xl/10 md:text-[40px]/12 font-extrabold">
             {{ collectivite.nom }}
           </h1>
           <UBadge
@@ -81,17 +85,16 @@ const avatarUrl = computed(() =>
           </UBadge>
         </div>
 
-        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-muted">
-          <span
-            v-if="collectivite.departementNom || collectivite.regionNom"
-            class="flex items-center gap-1"
-          >
-            <UIcon name="i-lucide-map-pin" />
-            <span>
-              {{ [collectivite.departementNom, collectivite.regionNom].filter(Boolean).join(', ') }}
-            </span>
-          </span>
-        </div>
+        <span
+          v-if="collectivite.departementNom || collectivite.regionNom"
+          class="flex items-center gap-1.5 text-muted"
+        >
+          <UIcon
+            name="i-lucide-map-pin"
+            class="size-4"
+          />
+          {{ [collectivite.departementNom, collectivite.regionNom].filter(Boolean).join(', ') }}
+        </span>
 
         <div
           v-if="collectivite.codesPostaux.length"

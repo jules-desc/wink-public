@@ -1,79 +1,91 @@
 <script setup lang="ts">
-const title = 'Wink Pages — Emploi et recrutement dans les collectivités territoriales'
-const description = 'Découvrez les collectivités territoriales qui recrutent. Offres d\'emploi, marque employeur et informations pratiques pour chaque commune, intercommunalité et département de France.'
+import type { MepFooterColumn, MepNavItem } from '~/types/mep'
+
+const title = 'Mon Employeur Public — Le média et la boîte à outils RH du secteur public'
+const description = 'Découvrez la marque employeur de chaque collectivité territoriale en France : chiffres clés, avantages, compétences et informations pratiques.'
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  ogSiteName: 'Wink Pages',
+  ogSiteName: 'Mon Employeur Public',
   ogLocale: 'fr_FR',
   twitterCard: 'summary_large_image'
 })
+
+const nav: MepNavItem[] = [
+  { label: 'Accueil', to: '/' },
+  { label: 'Ressources', to: '/ressources' },
+  { label: 'Guides', to: '/ressources/guides' },
+  { label: 'Modèles', to: '/ressources/modeles' },
+  { label: 'Fiches métiers', to: '/ressources/metiers' },
+  { label: 'Grilles et simulateur', to: '/ressources/grilles' },
+  { label: 'Actualités', to: '/ressources/actualites' },
+  { label: 'Annuaire', to: '/annuaire' }
+]
+
+const tools: MepNavItem[] = [
+  { label: 'Rechercher', to: '/annuaire', icon: 'i-lucide-search' },
+  { label: 'Newsletter', to: '/ressources#newsletter', icon: 'i-lucide-mail' }
+]
+
+const footerColumns: MepFooterColumn[] = [
+  {
+    title: 'Ressources',
+    links: [
+      { label: 'Guides', to: '/ressources/guides' },
+      { label: 'Modèles et outils', to: '/ressources/modeles' },
+      { label: 'Fiches métiers', to: '/ressources/metiers' },
+      { label: 'Grilles et simulateur', to: '/ressources/grilles' },
+      { label: 'Chiffres clés', to: '/ressources/chiffres-cles' },
+      { label: 'Actualités', to: '/ressources/actualites' }
+    ]
+  },
+  {
+    title: 'Annuaire',
+    links: [
+      { label: 'Toutes les régions', to: '/annuaire' },
+      { label: 'Rechercher une collectivité', to: '/annuaire' }
+    ]
+  },
+  {
+    title: 'Recruteurs',
+    links: [
+      { label: 'Réclamer votre page', to: '/#reclamer' }
+    ]
+  },
+  {
+    title: 'Wink',
+    links: [
+      { label: 'Découvrir Wink', to: 'https://wink-lab.com' }
+    ]
+  }
+]
 </script>
 
 <template>
   <UApp>
-    <UHeader>
-      <template #left>
-        <div class="flex items-center gap-4">
-          <NuxtLink
-            to="/"
-            class="focus-visible:outline-3 outline-primary/25 rounded-md p-1 -ms-1 flex items-center gap-2"
+    <div class="min-h-screen flex flex-col">
+      <MepHeader
+        :nav="nav"
+        :tools="tools"
+      >
+        <template #cta>
+          <UButton
+            to="/#reclamer"
+            size="sm"
           >
-            <span class="text-lg font-bold text-primary">Wink Pages</span>
-          </NuxtLink>
-          <nav class="hidden sm:flex items-center gap-1">
-            <UButton
-              to="/"
-              variant="ghost"
-              color="neutral"
-              size="sm"
-            >
-              Accueil
-            </UButton>
-            <UButton
-              to="/region/53"
-              variant="ghost"
-              color="neutral"
-              size="sm"
-            >
-              Régions
-            </UButton>
-            <UButton
-              to="/departement/69"
-              variant="ghost"
-              color="neutral"
-              size="sm"
-            >
-              Départements
-            </UButton>
-          </nav>
-        </div>
-      </template>
+            Réclamer ma page
+          </UButton>
+        </template>
+      </MepHeader>
 
-      <template #right>
-        <UColorModeButton />
-      </template>
-    </UHeader>
+      <main class="flex-1">
+        <NuxtPage />
+      </main>
 
-    <UMain>
-      <NuxtPage />
-    </UMain>
-
-    <USeparator />
-
-    <UFooter>
-      <template #left>
-        <p class="text-sm text-muted">
-          © {{ new Date().getFullYear() }} Wink Pages — Propulsé par <a
-            href="https://wink-lab.com"
-            target="_blank"
-            class="text-primary hover:underline"
-          >Wink</a>
-        </p>
-      </template>
-    </UFooter>
+      <MepFooter :columns="footerColumns" />
+    </div>
   </UApp>
 </template>

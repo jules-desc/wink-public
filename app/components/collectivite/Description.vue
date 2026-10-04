@@ -19,21 +19,21 @@ const sections = computed(() => {
   <div v-if="contenuPage">
     <div
       v-if="contenuPage.introduction"
-      class="text-lg text-muted leading-relaxed whitespace-pre-line mb-8"
+      class="text-lg/[30px] text-muted whitespace-pre-line mb-7"
     >
       {{ contenuPage.introduction }}
     </div>
 
-    <div class="space-y-8">
+    <div class="space-y-7">
       <div
         v-for="section in sections"
         :key="section.key"
       >
         <template v-if="contenuPage[section.key]">
-          <h2 class="text-xl font-semibold mb-3">
+          <h3 class="text-xl/7 font-bold mb-2.5">
             {{ section.title }}
-          </h2>
-          <div class="text-muted leading-relaxed whitespace-pre-line">
+          </h3>
+          <div class="text-muted whitespace-pre-line">
             {{ contenuPage[section.key] }}
           </div>
         </template>
@@ -43,7 +43,7 @@ const sections = computed(() => {
 
   <div
     v-else-if="description"
-    class="text-lg text-muted leading-relaxed whitespace-pre-line"
+    class="text-lg/[30px] text-muted whitespace-pre-line"
   >
     {{ description }}
   </div>

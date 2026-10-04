@@ -17,7 +17,7 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'fr' },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      titleTemplate: '%s | Wink Pages',
+      titleTemplate: '%s | Mon Employeur Public',
       meta: [
         { name: 'description', content: 'Découvrez les collectivités territoriales qui recrutent. Offres d\'emploi, marque employeur et informations pratiques.' }
       ],
@@ -28,6 +28,11 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
+
+  // Le design system est conçu en thème clair uniquement.
+  ui: {
+    colorMode: false
+  },
 
   runtimeConfig: {
     brandingApiKey: '',
@@ -45,6 +50,10 @@ export default defineNuxtConfig({
     // Pages listing : ISR avec revalidation toutes les heures
     '/departement/**': { swr: 3600 },
     '/region/**': { swr: 3600 },
+    // Ressources et annuaire : ISR avec revalidation toutes les heures
+    '/ressources': { swr: 3600 },
+    '/ressources/**': { swr: 3600 },
+    '/annuaire': { swr: 3600 },
     // API : pas de cache côté CDN
     '/api/**': { cors: true }
   },
@@ -57,6 +66,13 @@ export default defineNuxtConfig({
         commaDangle: 'never',
         braceStyle: '1tbs'
       }
+    }
+  },
+
+  fonts: {
+    defaults: {
+      weights: [400, 500, 600, 700, 800],
+      styles: ['normal', 'italic']
     }
   }
 })

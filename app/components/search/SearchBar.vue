@@ -35,6 +35,14 @@ function onKeydown(e: KeyboardEvent) {
   }
 }
 
+function onSubmit() {
+  const target = results.value[activeIndex.value] ?? results.value[0]
+  if (target) {
+    navigateTo(`/etablissement/${target.slug}`)
+    close()
+  }
+}
+
 function close() {
   isOpen.value = false
   clear()
@@ -60,22 +68,39 @@ onUnmounted(() => {
     ref="containerRef"
     class="relative w-full"
   >
-    <UInput
-      v-model="query"
-      size="xl"
-      icon="i-lucide-search"
-      placeholder="Rechercher une commune, un département..."
-      class="w-full"
-      :loading="isLoading"
-      role="combobox"
-      :aria-expanded="isOpen"
-      autocomplete="off"
-      @keydown="onKeydown"
-    />
+    <form
+      role="search"
+      class="flex"
+      @submit.prevent="onSubmit"
+    >
+      <div class="relative flex flex-1 items-center">
+        <UIcon
+          name="i-lucide-search"
+          class="absolute left-4.5 size-5.5 text-dimmed pointer-events-none"
+        />
+        <input
+          v-model="query"
+          type="search"
+          placeholder="Rechercher une commune, un département…"
+          aria-label="Rechercher une commune, un département"
+          role="combobox"
+          :aria-expanded="isOpen"
+          autocomplete="off"
+          class="w-full h-14 pl-13 pr-4 text-lg text-highlighted bg-default border border-r-0 border-(--grey-300) rounded-none outline-none placeholder:text-dimmed focus:border-primary focus:shadow-[inset_0_0_0_1px_var(--ui-primary)]"
+          @keydown="onKeydown"
+        >
+      </div>
+      <button
+        type="submit"
+        class="h-14 px-6 bg-primary text-white font-semibold text-[17px] cursor-pointer transition-colors duration-[120ms] hover:bg-primary-900 active:bg-primary-950"
+      >
+        Rechercher
+      </button>
+    </form>
 
     <div
       v-if="isOpen"
-      class="absolute top-full left-0 right-0 z-50 mt-1 bg-default border border-default rounded-lg shadow-lg overflow-hidden"
+      class="absolute top-full left-0 right-0 z-50 mt-1 bg-default border border-default shadow-(--shadow-overlay) overflow-hidden"
     >
       <!-- Loading -->
       <div
@@ -95,23 +120,27 @@ onUnmounted(() => {
           v-for="(result, index) in results"
           :key="result.slug"
           :to="`/etablissement/${result.slug}`"
-          class="flex items-center gap-3 px-4 py-3 hover:bg-elevated transition-colors"
-          :class="{ 'bg-elevated': index === activeIndex }"
+          class="flex items-center gap-3 px-4 py-2.5 no-underline text-default border-t border-(--border-subtle) first:border-t-0 hover:bg-(--surface-brand-tint) transition-colors"
+          :class="{ 'bg-(--surface-brand-tint)': index === activeIndex }"
           @click="close"
         >
           <UAvatar
             v-if="result.blasonUrl || result.logoUrl"
             :src="result.logoUrl || result.blasonUrl || undefined"
             :alt="result.nom"
-            size="sm"
+            size="md"
           />
-          <UIcon
+          <span
             v-else
-            name="i-lucide-landmark"
-            class="w-5 h-5 text-muted"
-          />
+            class="size-8 shrink-0 flex items-center justify-center bg-(--surface-brand-tint) text-primary"
+          >
+            <UIcon
+              name="i-lucide-landmark"
+              class="size-4"
+            />
+          </span>
           <div class="min-w-0 flex-1">
-            <div class="font-medium truncate">
+            <div class="font-semibold text-highlighted truncate">
               {{ result.nom }}
             </div>
             <div class="text-sm text-muted truncate">

@@ -1,0 +1,132 @@
+[
+  {
+    "id": "effectifs-fpt",
+    "valeur": 2039400,
+    "unite": "agents",
+    "libelle": "Agents de la fonction publique territoriale fin 2024",
+    "perimetre": "France hors Mayotte, postes principaux au 31/12/2024, y compris bénéficiaires de contrats aidés",
+    "annee": 2024,
+    "source": {
+      "titre": "Insee Première n° 2094 – L'emploi dans la fonction publique en 2024 (Insee/DGAFP, 10 février 2026), figures 1 et 3",
+      "url": "https://www.insee.fr/fr/statistiques/8732435"
+    },
+    "verifie": true
+  },
+  {
+    "id": "effectifs-fonction-publique",
+    "valeur": 5876700,
+    "unite": "agents",
+    "libelle": "Agents de l'ensemble de la fonction publique (FPE 2 587 400, FPT 2 039 400, FPH 1 249 900) fin 2024",
+    "perimetre": "France hors Mayotte, postes principaux au 31/12/2024, y compris bénéficiaires de contrats aidés",
+    "annee": 2024,
+    "source": {
+      "titre": "Insee Première n° 2094 – L'emploi dans la fonction publique en 2024 (Insee/DGAFP, 10 février 2026), figures 1 et 3",
+      "url": "https://www.insee.fr/fr/statistiques/8732435"
+    },
+    "verifie": true
+  },
+  {
+    "id": "part-contractuels-fpt",
+    "valeur": 26.4,
+    "unite": "%",
+    "libelle": "Part des contractuels parmi les agents de la FPT",
+    "perimetre": "France hors Mayotte, postes principaux au 31/12/2024, y compris bénéficiaires de contrats aidés",
+    "annee": 2024,
+    "source": {
+      "titre": "Insee Première n° 2094 – L'emploi dans la fonction publique en 2024 (Insee/DGAFP, 10 février 2026), figures 1 et 3",
+      "url": "https://www.insee.fr/fr/statistiques/8732435"
+    },
+    "verifie": true
+  },
+  {
+    "id": "part-femmes-fpt",
+    "valeur": 61.4,
+    "unite": "%",
+    "libelle": "Part des femmes parmi les agents de la FPT",
+    "perimetre": "France hors Mayotte, postes principaux au 31/12/2024, y compris bénéficiaires de contrats aidés",
+    "annee": 2024,
+    "source": {
+      "titre": "Insee Première n° 2094 – L'emploi dans la fonction publique en 2024 (Insee/DGAFP, 10 février 2026), figures 1 et 3",
+      "url": "https://www.insee.fr/fr/statistiques/8732435"
+    },
+    "verifie": true
+  },
+  {
+    "id": "part-categorie-c-fpt",
+    "valeur": 70.0,
+    "unite": "%",
+    "libelle": "Part des agents de catégorie C dans la FPT (contre 14,9 % en B et 13,1 % en A)",
+    "perimetre": "France hors Mayotte, postes principaux au 31/12/2024, y compris bénéficiaires de contrats aidés ; catégorie attribuée aux non-titulaires selon leur grade, contrats aidés classés en C",
+    "annee": 2024,
+    "source": {
+      "titre": "Insee Première n° 2094 – L'emploi dans la fonction publique en 2024 (Insee/DGAFP, 10 février 2026), figures 1 et 3",
+      "url": "https://www.insee.fr/fr/statistiques/8732435"
+    },
+    "verifie": true
+  },
+  {
+    "id": "part-categorie-a-fpt",
+    "valeur": 13.1,
+    "unite": "%",
+    "libelle": "Part des agents de catégorie A dans la FPT",
+    "perimetre": "France hors Mayotte, postes principaux au 31/12/2024, y compris bénéficiaires de contrats aidés",
+    "annee": 2024,
+    "source": {
+      "titre": "Insee Première n° 2094 – L'emploi dans la fonction publique en 2024 (Insee/DGAFP, 10 février 2026), figures 1 et 3",
+      "url": "https://www.insee.fr/fr/statistiques/8732435"
+    },
+    "verifie": true
+  },
+  {
+    "id": "age-moyen-fpt",
+    "valeur": 45.75,
+    "unite": "ans",
+    "libelle": "Âge moyen des agents de la FPT (45 ans et 9 mois), versant le plus âgé",
+    "perimetre": "France hors Mayotte, postes principaux au 31/12/2024, y compris bénéficiaires de contrats aidés",
+    "annee": 2024,
+    "source": {
+      "titre": "Insee Première n° 2094 – L'emploi dans la fonction publique en 2024 (Insee/DGAFP, 10 février 2026), figures 1 et 3",
+      "url": "https://www.insee.fr/fr/statistiques/8732435"
+    },
+    "verifie": true
+  },
+  {
+    "id": "part-50-ans-plus-fpt",
+    "valeur": 44.4,
+    "unite": "%",
+    "libelle": "Part des agents de la FPT âgés de 50 ans ou plus",
+    "perimetre": "France hors Mayotte, postes principaux au 31/12/2024, y compris bénéficiaires de contrats aidés",
+    "annee": 2024,
+    "source": {
+      "titre": "Insee Première n° 2094 – L'emploi dans la fonction publique en 2024 (Insee/DGAFP, 10 février 2026), figures 1 et 3",
+      "url": "https://www.insee.fr/fr/statistiques/8732435"
+    },
+    "verifie": true
+  },
+  {
+    "id": "nombre-communes",
+    "valeur": 34875,
+    "unite": "communes",
+    "libelle": "Nombre de communes au 1er janvier 2026",
+    "perimetre": "France métropolitaine et départements d'outre-mer",
+    "annee": 2026,
+    "source": {
+      "titre": "DGCL – BIS n° 206 « Les structures territoriales au 1er janvier 2026 » (modifié le 06/02/2026)",
+      "url": "https://www.collectivites-locales.gouv.fr/actualites/bis-206-les-structures-territoriales-au-1er-janvier"
+    },
+    "verifie": true
+  },
+  {
+    "id": "nombre-epci-fiscalite-propre",
+    "valeur": 1252,
+    "unite": "EPCI",
+    "libelle": "EPCI à fiscalité propre au 1er janvier 2026 (21 métropoles, 14 CU, 230 CA, 987 CC)",
+    "perimetre": "France métropolitaine et départements d'outre-mer",
+    "annee": 2026,
+    "source": {
+      "titre": "DGCL – BIS n° 206 « Les structures territoriales au 1er janvier 2026 » (modifié le 06/02/2026)",
+      "url": "https://www.collectivites-locales.gouv.fr/actualites/bis-206-les-structures-territoriales-au-1er-janvier"
+    },
+    "verifie": true
+  }
+]
